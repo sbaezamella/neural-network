@@ -14,7 +14,7 @@ y = [0, 1, 1, 0]
 n_epochs = 100_000
 
 nn.train(X, y, n_epochs)
-        
+
 for x, label in zip(X, y):
     output = nn.predict(x)
     print()

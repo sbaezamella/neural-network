@@ -1,5 +1,6 @@
-from neural_network import NeuralNetwork
 import pandas as pd
+
+from neural_network import NeuralNetwork
 
 nn = NeuralNetwork([13, 5, 1])
 
@@ -36,19 +37,3 @@ y_test = data_label.iloc[n_test:]
 # Entrenamiento
 n_epochs = 1
 nn.train(X_train.values, y_train.values, n_epochs, lr=0.1)
-# for n_epochs in [100, 150, 200, 250, 300, 350, 400, 450, 500]:
-#     nn.train(X_train.values, y_train.values, n_epochs, lr=0.1)
-
-
-# predicted_right = 0
-# for epoch in range(n_epochs):
-#     for row, label in zip(X_train.values, y_test.values):
-#         output = nn.predict(row)
-#         predicted = 0 if output < 0.5 else 1
-#         if predicted == label:
-#             predicted_right += 1
-#         acc = predicted_right / n_train * 100
-#         nn.update_weights(label, lr=0.1)
-#         nn.reset_values()
-#     predicted_right = 0
-#     print(f"Epoch {epoch}/{n_epochs} - accuracy {acc}")

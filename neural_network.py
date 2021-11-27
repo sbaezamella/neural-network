@@ -9,7 +9,7 @@ from neuron import Neuron
 
 
 class NeuralNetwork:
-    def __init__(self, layers: List[int]):  # nn = NeuralNetwork([5, 3, 2])
+    def __init__(self, layers: List[int]):
         self.layers: List[List[Neuron]] = []
         self.add_layers(layers)
         self.setup()
@@ -85,15 +85,13 @@ class NeuralNetwork:
             accuracy = correct_prediction / len(X) * 100
             loss = error / len(X)
             print("Epoch {}/{}, Loss: {:.8f}, Accuracy: {:.3f}".format(epoch + 1, n_epochs, loss, accuracy))
-        # print(f"Epochs {n_epochs}, Loss: {loss}, Accuracy: {accuracy}")
 
 
 def mean_squared_error(actual, predicted):
-    sum_square_error = 0
-    for i in range(len(actual)):
-        sum_square_error += (actual[i] - predicted[i]) ** 2.0
-    mean_squared_error = 1.0 / len(actual) * sum_square_error
-    return mean_squared_error
+    sum_square_error = sum(
+        (actual[i] - predicted[i]) ** 2.0 for i in range(len(actual))
+    )
+    return 1.0 / len(actual) * sum_square_error
 
 
 if __name__ == "__main__":
